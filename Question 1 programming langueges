@@ -1,0 +1,48 @@
+import csv
+
+def calculate_grade(mark):
+  if mark >= 90:
+    return "A"
+  elif mark >= 80:
+    return "B"
+  elif mark >= 70:
+    return "C"
+  elif mark >= 60:
+    return "D"
+  else:
+    return "F"
+
+def main():
+  students = []
+  num_students = int(input("Enter number of students: "))
+  for i in range(num_students):
+    name = input("Enter student name: ")
+    marks = []
+    for j in range(5):
+      mark = float(input(f"Enter mark for subject {j+1}: "))
+      marks.append(mark)
+    average = sum(marks) / len(marks)
+    grade = calculate_grade(average)
+    students.append([name, marks, average, grade])
+
+  total_marks = 0
+  total_grades = 0
+  for student in students:
+    total_marks += student[2]
+    total_grades += ord(student[3]) - ord('A')
+  mean_mark = total_marks / num_students
+  mean_grade = chr(ord('A') + total_grades / num_students)
+
+  with open('transcript.csv', 'w', newline='') as csvfile:
+    fieldnames = ['Name', 'Marks', 'Average', 'Grade']
+    writer = csv.writer(csvfile)
+    writer.writerow(fieldnames)
+    for student in students:
+      writer.writerow(student)
+
+  print("Transcript written to transcript.csv")
+  print("Mean mark:", mean_mark)
+  print("Mean grade:", mean_grade)
+
+if __name__ == "__main__":
+  main()

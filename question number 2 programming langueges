@@ -1,0 +1,18 @@
+def boolean_example():
+  num = int(input("Enter a number: "))
+  is_even = num % 2 == 0
+  is_divisible_by_3 = num % 3 == 0
+
+  if is_even:
+    if is_divisible_by_3:
+      print(num, "is even and divisible by 3")
+    else:
+      print(num, "is even but not divisible by 3")
+  else:
+    if is_divisible_by_3:
+      print(num, "is not even but divisible by 3")
+    else:
+      print(num, "is neither even nor divisible by 3")
+
+if __name__ == "__main__":
+  boolean_example()

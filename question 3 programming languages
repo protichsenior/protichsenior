@@ -1,0 +1,41 @@
+import math
+
+def calculate_area(shape, *args):
+  if shape == "rectangle":
+    length, width = args
+    return length * width
+  elif shape == "circle":
+    radius, = args
+    return math.pi * radius**2
+  elif shape == "triangle":
+    base, height = args
+    return 0.5 * base * height
+  else:
+    return "Invalid shape"
+
+def swap(x, y):
+  temp = x
+  x = y
+  y = temp
+
+def factorial(n):
+  if n == 0:
+    return 1
+  else:
+    return n * factorial(n - 1)
+
+area_rectangle = calculate_area("rectangle", 5, 3)
+area_circle = calculate_area("circle", 2)
+area_triangle = calculate_area("triangle", 4, 6)
+
+print(area_rectangle)
+print(area_circle)
+print(area_triangle)
+
+a = 10
+b = 20
+swap(a, b)
+print(a, b)
+
+result = factorial(5)
+print(result)
